@@ -4,13 +4,7 @@
 
 This project is developed using **React.js** for a component-based architecture and clean routing, ensuring a seamless single-page experience.
 
----
 
-## 🌐 Live Preview
-
-[🔗 Coming Soon](#)
-
----
 
 ## 📌 Features
 
@@ -50,7 +44,5 @@ This project is developed using **React.js** for a component-based architecture 
 | Font Awesome     | Icons for medical and UI elements        |
 | React Router     | (If used) Navigation between components  |
 
----
 
-## 📁 Project Structure
 
