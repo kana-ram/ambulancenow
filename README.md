@@ -26,7 +26,5 @@ ChefVoice is a voice-controlled cooking assistant web app that guides users thro
 - Firebase Authentication (Login, Signup, Logout)
 - Firestore (real-time database for user & recipe data)
 
----
 
-## 📁 Project Structure
 
