@@ -1,30 +1,56 @@
-# 👨‍🍳 ChefVoice - Your AI-Powered Cooking Assistant
+# 🚑 Ambulance Now - Emergency Medical Web App
 
-ChefVoice is a voice-controlled cooking assistant web app that guides users through recipes step-by-step using voice interaction. Built using modern frontend technologies and AI tools, this app enhances the cooking experience by allowing users to navigate recipes hands-free and manage timers, ingredients, and instructions—all via voice.
+**Ambulance Now** is a modern, responsive, and fast web application designed to revolutionize emergency medical services by providing users with critical ambulance service information, easy contact options, and access to mobile applications.
 
-## 🔥 Features
-
-- 🎙️ Voice Navigation: Control the app hands-free using Web Speech API (voice recognition).
-- 🧠 AI Voice Understanding: Uses OpenAI's Whisper API for advanced voice-to-text accuracy.
-- 📝 Step-by-step recipe walkthrough.
-- ⏱️ Set and manage cooking timers via voice.
-- 🧾 Save your favorite recipes.
-- 🔐 User Authentication via Firebase.
-- 🧮 Firestore database for storing user data and recipes.
+This project is developed using **React.js** for a component-based architecture and clean routing, ensuring a seamless single-page experience.
 
 ---
 
-## 🛠️ Tech Stack
+## 🌐 Live Preview
 
-### Frontend:
-- React.js
-- Web Speech API (browser-based voice recognition)
-- Tailwind CSS (or standard CSS)
+[🔗 Coming Soon](#)
 
-### Backend / AI:
-- OpenAI Whisper API for real-time transcription
-- Firebase Authentication (Login, Signup, Logout)
-- Firestore (real-time database for user & recipe data)
+---
 
+## 📌 Features
 
+- 🚨 **Responsive Landing Page**  
+  A sleek interface showcasing all ambulance-related services.
+
+- 📱 **Mobile Applications Section**  
+  Highlights platform availability for mobile users.
+
+- 👨‍⚕️ **Booking Section**  
+  Allows patients or hospitals to request ambulance services.
+
+- 📞 **Contact Section**  
+  Form and contact info for quick reach-out.
+
+- ℹ️ **About Us & Why Choose Us**  
+  Explains the mission, values, and advantages of the service.
+
+- 🧾 **Legal and Support Pages**  
+  Includes Careers, Privacy Policy, Terms of Service, Emergency Protocols, and Help Center sections.
+
+- 🔃 **Animated Loading Screen**  
+  Enhances user experience with a smooth loading overlay.
+
+- 📟 **Fully Componentized Code**  
+  Each section is modular and reusable.
+
+---
+
+## 🛠️ Technologies Used
+
+| Tech             | Purpose                                 |
+|------------------|------------------------------------------|
+| React.js         | UI Library and SPA implementation        |
+| JSX              | HTML-like syntax in JavaScript           |
+| CSS              | Styling and animations                   |
+| Font Awesome     | Icons for medical and UI elements        |
+| React Router     | (If used) Navigation between components  |
+
+---
+
+## 📁 Project Structure
 
