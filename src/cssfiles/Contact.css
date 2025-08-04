@@ -91,7 +91,23 @@
    }
 
 }
+@media (max-width: 1524px) {
+    .contact-grid {
+        gap: 2rem;
+        padding: 0 1rem;
+    }
 
+    .contact-form{
+        padding: 2rem;
+        margin-top: 10%;
+     margin-left: 72%;
+    }
+   .section-title
+   {
+    margin-top: -10%!important;
+   }
+
+}
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../styles.css';
+import '../cssfiles/Help.css';
+
 const HelpCenter = () => {
   const [openFaqs, setOpenFaqs] = useState({});
 
@@ -17,56 +18,19 @@ const HelpCenter = () => {
       <div className="container">
         <h2 className="section-title fade-in">Help Center</h2>
 
-        <div className="help-search fade-in" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <div style={{ position: 'relative' }}>
-              <input
-                type="text"
-                placeholder="Search for help..."
-                style={{
-                  width: '100%',
-                  padding: '1rem 3rem 1rem 1rem',
-                  border: '2px solid #e9ecef',
-                  borderRadius: '50px',
-                  fontSize: '1.1rem',
-                  background: '#f8f9fa',
-                }}
-              />
-              <i
-                className="fas fa-search"
-                style={{
-                  position: 'absolute',
-                  right: '1rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: '#999',
-                  fontSize: '1.2rem',
-                }}
-              />
+        <div className="help-search fade-in">
+          <div className="search-wrapper">
+            <div className="search-box">
+              <input type="text" placeholder="Search for help..." className="search-input" />
+              <i className="fas fa-search search-icon" />
             </div>
           </div>
         </div>
 
-        <div
-          className="help-categories"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem',
-          }}
-        >
+        <div className="help-categories">
           {/* FAQ Section */}
-          <div
-            className="help-category fade-in"
-            style={{
-              background: 'white',
-              padding: '2rem',
-              borderRadius: '15px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            <h3 style={{ color: '#e74c3c', marginBottom: '1.5rem' }}>
+          <div className="help-category fade-in">
+            <h3 className="category-title">
               <i className="fas fa-question-circle" /> Frequently Asked Questions
             </h3>
 
@@ -87,49 +51,22 @@ const HelpCenter = () => {
                   'Our AI-powered dispatch system aims for an average response time of under 5 minutes in urban areas...',
               },
             ].map((faq, index) => (
-              <div
-                key={index}
-                className="faq-item"
-                style={{
-                  marginBottom: '1rem',
-                  paddingBottom: '1rem',
-                  borderBottom: index < 2 ? '1px solid #eee' : 'none',
-                }}
-              >
-                <h4
-                  style={{
-                    cursor: 'pointer',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                  onClick={() => toggleFAQ(index)}
-                >
+              <div key={index} className="faq-item">
+                <h4 className="faq-question" onClick={() => toggleFAQ(index)}>
                   {faq.question}
                   <i className="fas fa-chevron-down" />
                 </h4>
-                {openFaqs[index] && (
-                  <p style={{ marginTop: '0.5rem', color: '#666' }}>{faq.answer}</p>
-                )}
+                {openFaqs[index] && <p className="faq-answer">{faq.answer}</p>}
               </div>
             ))}
           </div>
 
           {/* App Support */}
-          <div
-            className="help-category fade-in"
-            style={{
-              background: 'white',
-              padding: '2rem',
-              borderRadius: '15px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            <h3 style={{ color: '#e74c3c', marginBottom: '1.5rem' }}>
+          <div className="help-category fade-in">
+            <h3 className="category-title">
               <i className="fas fa-mobile-alt" /> App Support
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul className="support-list">
               {[
                 { icon: 'download', text: 'How to download the app' },
                 { icon: 'user-circle', text: 'Creating an account' },
@@ -137,25 +74,8 @@ const HelpCenter = () => {
                 { icon: 'bell', text: 'Notification settings' },
                 { icon: 'bug', text: 'Troubleshooting common issues' },
               ].map((item, i) => (
-                <li
-                  key={i}
-                  style={{
-                    marginBottom: i < 4 ? '1rem' : 0,
-                    padding: '0.5rem 0',
-                    borderBottom: i < 4 ? '1px solid #eee' : 'none',
-                  }}
-                >
-                  <a
-                    href="#"
-                    onClick={showComingSoon}
-                    style={{
-                      textDecoration: 'none',
-                      color: '#333',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                    }}
-                  >
+                <li key={i} className="support-item">
+                  <a href="#" onClick={showComingSoon}>
                     <i className={`fas fa-${item.icon}`} /> {item.text}
                   </a>
                 </li>
@@ -164,48 +84,26 @@ const HelpCenter = () => {
           </div>
 
           {/* Contact Support */}
-          <div
-            className="help-category fade-in"
-            style={{
-              background: 'white',
-              padding: '2rem',
-              borderRadius: '15px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            <h3 style={{ color: '#e74c3c', marginBottom: '1.5rem' }}>
+          <div className="help-category fade-in">
+            <h3 className="category-title">
               <i className="fas fa-headset" /> Contact Support
             </h3>
-            <div style={{ textAlign: 'center' }}>
-              <p style={{ marginBottom: '2rem', color: '#666' }}>
-                Need additional help? Our support team is here for you.
-              </p>
+            <div className="contact-support">
+              <p className="contact-desc">Need additional help? Our support team is here for you.</p>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <i className="fas fa-phone" style={{ color: '#e74c3c', fontSize: '1.5rem' }} />
-                <p style={{ fontWeight: 'bold' }}>Emergency Hotline</p>
-                <p style={{ color: '#666' }}>Available 24/7 (Coming Soon)</p>
+              <div className="contact-method">
+                <i className="fas fa-phone contact-icon" />
+                <p className="method-title">Emergency Hotline</p>
+                <p className="method-desc">Available 24/7 (Coming Soon)</p>
               </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <i className="fas fa-envelope" style={{ color: '#e74c3c', fontSize: '1.5rem' }} />
-                <p style={{ fontWeight: 'bold' }}>Email Support</p>
-                <p style={{ color: '#666' }}>support@ambulancenow.com</p>
+              <div className="contact-method">
+                <i className="fas fa-envelope contact-icon" />
+                <p className="method-title">Email Support</p>
+                <p className="method-desc">support@ambulancenow.com</p>
               </div>
 
-              <button
-                onClick={showComingSoon}
-                style={{
-                  background: 'linear-gradient(45deg, #e74c3c, #f39c12)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.8rem 1.5rem',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                }}
-              >
+              <button className="live-chat-button" onClick={showComingSoon}>
                 Start Live Chat
               </button>
             </div>

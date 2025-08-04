@@ -1,0 +1,137 @@
+.help-search {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.search-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  background: #f8f9fa;
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.2rem;
+}
+
+.help-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.help-category {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.category-title {
+  color: #e74c3c;
+  margin-bottom: 1.5rem;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.support-list {
+  list-style: none;
+  padding: 0;
+}
+
+.support-item {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.support-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.support-item a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-support {
+  text-align: center;
+}
+
+.contact-desc {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.contact-method {
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  color: #e74c3c;
+  font-size: 1.5rem;
+}
+
+.method-title {
+  font-weight: bold;
+}
+
+.method-desc {
+  color: #666;
+}
+
+.live-chat-button {
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+    .section-title {
+        margin-top: 10%!important;
+    }
+}

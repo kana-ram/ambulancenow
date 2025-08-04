@@ -534,7 +534,7 @@
             100% { transform: translate(10px, 10px); }
         }
 
-        .apps-content {
+        /* .apps-content {
             position: relative;
             z-index: 2;
         }
@@ -587,7 +587,7 @@
 
         .app-card:hover .app-icon {
             transform: scale(1.2) rotateZ(10deg);
-        }
+        } */
 
         /* App Form Section */
         .app-form-section {
@@ -674,7 +674,7 @@
             box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
         }
 
-        /* Download Buttons */
+        /* Download Buttons
         .download-section {
             text-align: center;
             margin-top: 4rem;
@@ -707,7 +707,7 @@
 
         .download-btn i {
             font-size: 2rem;
-        }
+        } */
 
         /* Benefits Section */
         .benefits {

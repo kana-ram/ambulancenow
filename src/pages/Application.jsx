@@ -81,7 +81,7 @@ const App = () => {
                     <div>Driver App </div>
                   </div>
                 </a>
-                <a style={{marginBottom:'40px'}} href="https://drive.google.com/file/d/1HMpKmJ0SPXe5rtLtSrGmIS8j2jkKZ_B0/view?usp=sharing" className="download-btn" onClick={showComingSoon}>
+                <a style={{marginBottom:'8px'}} href="https://drive.google.com/file/d/1HMpKmJ0SPXe5rtLtSrGmIS8j2jkKZ_B0/view?usp=sharing" className="download-btn" onClick={showComingSoon}>
                   <i className="fab fa-google-play"></i>
                   <div>
                     <div style={{ fontSize: '0.8rem', opacity: 0.8 , }}>Download for</div>

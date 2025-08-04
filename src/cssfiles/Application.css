@@ -112,6 +112,40 @@ img {
 .app-card:hover .app-icon {
     transform: scale(1.15) rotate(8deg);
 }
+  /* Download Buttons */
+        .download-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #333, #555);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .download-btn i {
+            font-size: 2rem;
+        }
 
 /* =================================
    ANIMATIONS
@@ -162,6 +196,25 @@ img {
     {
         margin-top: 0%;
     }
+    .app-card 
+    {
+        margin-top: 5%;
+        margin-left: 30%;
+        width: 50%;
+    }
+}
+@media (max-width: 1524px) {
+    .section-tittle
+    {
+        margin-top: 0%;
+    }
+    .app-card 
+    {
+        margin-top: 5%;
+        margin-left: 30%;
+        width: 50%;
+        align-items: center;
+    }
 }
 @media (max-width: 768px) {
     .apps {
@@ -178,6 +231,7 @@ img {
         margin-right: -62px;
         margin-top: 48px;
         margin-bottom: -62px;
+        width: 103%;
     }
 
     .app-icon {
