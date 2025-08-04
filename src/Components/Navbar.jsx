@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react';
-import '../Styles.css';
+import logo from '../assests/logo.png'; // Make sure this logo has transparent background
+
 const Navbar = () => {
-  // Scroll to section smoothly
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Close the menu after clicking any link (especially on mobile)
+    const navLinks = document.querySelector('.nav-links');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (navLinks && navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+    }
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+    }
   };
 
-  // Optional: Toggle mobile menu if you plan to implement responsive navbar
   useEffect(() => {
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -33,8 +42,31 @@ const Navbar = () => {
   return (
     <nav className="navbar" id="navbar">
       <div className="nav-container">
-        <a href="#home" className="logo">
-          <i className="fas fa-ambulance"></i> Ambulance Now
+        <a
+          href="#home"
+          className="logo"
+          onClick={() => scrollToSection('home')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+            fontWeight: 'bold',
+            color: 'red'
+          }}
+        >
+          <img
+            src={logo}
+            alt="Ambulance Now Logo"
+            style={{
+              height: '40px',
+              width: 'auto',
+              marginRight: '10px',
+              background: 'transparent',
+              borderRadius: '5px',
+              objectFit: 'contain'
+            }}
+          />
+          Ambulance Now
         </a>
         <ul className="nav-links">
           <li><a href="#home" onClick={() => scrollToSection('home')}>Home</a></li>

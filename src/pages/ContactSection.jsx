@@ -1,18 +1,49 @@
-import React from 'react';
-import '../Styles.css';
+import React, { useState } from 'react';
+import '../cssfiles/Contact.css';
+import { db } from '../firebase';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
+
 const ContactSection = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add custom form handling logic here (e.g., Firebase, EmailJS, etc.)
-    alert("Message sent (form handling not implemented yet).");
+  const [formData, setFormData] = useState({
+    contactName: '',
+    contactEmail: '',
+    contactSubject: '',
+    contactMessage: '',
+  });
+
+  // ✅ Update formData when input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
+  // ✅ Submit data to Firestore
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await addDoc(collection(db, 'contact'), {
+      contactName: formData.contactName,
+      contactEmail: formData.contactEmail,
+      contactSubject: formData.contactSubject,
+      contactMessage: formData.contactMessage,
+      timestamp: new Date()
+    });
+    alert('Message sent!');
+  } catch (err) {
+    console.error("Firestore Error:", err);
+  }
+};
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <h2 className="section-title fade-in">Get In Touch</h2>
+        <h2 className="section-title fade-in" style={{
+      
+        marginTop:'-30%'
+      }}>Get In Touch</h2>
         <div className="contact-grid">
-
           <div className="contact-form fade-in slide-in-left">
             <h3 style={{ marginBottom: '2rem' }}>
               <i className="fas fa-envelope"></i> Send us a Message
@@ -24,6 +55,8 @@ const ContactSection = () => {
                   type="text"
                   id="contactName"
                   name="contactName"
+                  value={formData.contactName}
+                  onChange={handleChange}
                   placeholder="Your full name"
                   required
                 />
@@ -34,6 +67,8 @@ const ContactSection = () => {
                   type="email"
                   id="contactEmail"
                   name="contactEmail"
+                  value={formData.contactEmail}
+                  onChange={handleChange}
                   placeholder="Your email address"
                   required
                 />
@@ -44,6 +79,8 @@ const ContactSection = () => {
                   type="text"
                   id="contactSubject"
                   name="contactSubject"
+                  value={formData.contactSubject}
+                  onChange={handleChange}
                   placeholder="Message subject"
                   required
                 />
@@ -54,6 +91,8 @@ const ContactSection = () => {
                   id="contactMessage"
                   name="contactMessage"
                   rows="5"
+                  value={formData.contactMessage}
+                  onChange={handleChange}
                   placeholder="Your message..."
                   required
                   style={{ resize: 'vertical' }}
@@ -63,40 +102,6 @@ const ContactSection = () => {
                 <i className="fas fa-paper-plane"></i> Send Message
               </button>
             </form>
-          </div>
-
-          <div className="contact-info fade-in slide-in-right">
-            <h3 style={{ marginBottom: '2rem' }}>
-              <i className="fas fa-info-circle"></i> Contact Information
-            </h3>
-            <div className="contact-item">
-              <i className="fas fa-phone-alt"></i>
-              <div>
-                <h4>Emergency Hotline</h4>
-                <p>Coming Soon</p>
-              </div>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-envelope"></i>
-              <div>
-                <h4>Email Support</h4>
-                <p>info@ambulancenow.com</p>
-              </div>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <div>
-                <h4>Service Area</h4>
-                <p>Launching Soon</p>
-              </div>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-clock"></i>
-              <div>
-                <h4>Operating Hours</h4>
-                <p>24/7 Emergency Service</p>
-              </div>
-            </div>
           </div>
 
         </div>

@@ -1,22 +1,59 @@
-import React from 'react';
-import '../Styles.css';
+import React, { useState } from 'react';
+import '../cssfiles/Application.css';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 const App = () => {
+  const [formData, setFormData] = useState({
+    userName: '',
+    phoneNumber: '',
+    pickupLocation: '',
+    serviceType: '',
+    preferredDate: '',
+    preferredTime: '',
+    emergencyDetails: '',
+  });
+
   const showComingSoon = () => {
     alert('App download feature coming soon!');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Booking request submitted!');
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, 'bookings'), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+      alert('Booking request submitted successfully!');
+      setFormData({
+        userName: '',
+        phoneNumber: '',
+        pickupLocation: '',
+        serviceType: '',
+        preferredDate: '',
+        preferredTime: '',
+        emergencyDetails: '',
+      });
+    } catch (error) {
+      console.error('Error submitting booking: ', error);
+      alert('Error submitting booking. Please try again.');
+    }
+  };
   return (
     <>
       {/* Apps Section */}
       <section id="apps" className="section apps">
         <div className="apps-content">
           <div className="container">
-            <h2 className="section-title fade-in">Our Mobile Applications</h2>
+            <h2 className="section-title fade-in" style={{marginTop:'-10%'}}>Our Mobile Applications</h2>
             <div className="apps-grid">
               <div className="app-card fade-in slide-in-left">
                 <i className="app-icon fas fa-user"></i>
@@ -30,43 +67,25 @@ const App = () => {
                   <li><i className="fas fa-check"></i> Emergency contacts notification</li>
                 </ul>
               </div>
-              <div className="app-card fade-in slide-in-right">
-                <i className="app-icon fas fa-car"></i>
-                <h3>Driver App</h3>
-                <p>Professional interface for ambulance drivers featuring:</p>
-                <ul style={{ textAlign: 'left', marginTop: '1rem', lineHeight: 2 }}>
-                  <li><i className="fas fa-check"></i> Receive emergency requests</li>
-                  <li><i className="fas fa-check"></i> GPS navigation to patient location</li>
-                  <li><i className="fas fa-check"></i> Patient condition information</li>
-                  <li><i className="fas fa-check"></i> Hospital destination updates</li>
-                  <li><i className="fas fa-check"></i> Communication with dispatch center</li>
-                </ul>
-              </div>
+             
             </div>
 
             <div className="download-section fade-in">
               <h3 style={{ marginBottom: '1rem', fontSize: '2rem' }}>Download Our Apps</h3>
               <p style={{ marginBottom: '2rem', opacity: 0.9 }}>Get instant access to emergency medical services</p>
               <div className="download-buttons">
-                <a href="#" className="download-btn" onClick={showComingSoon}>
-                  <i className="fab fa-apple"></i>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Download for</div>
-                    <div>User App - iOS</div>
-                  </div>
-                </a>
-                <a href="#" className="download-btn" onClick={showComingSoon}>
+                <a href="https://drive.google.com/file/d/1tLXM53Go98oAU7YkNUV5sQNfGIRP-yTY/view?usp=sharing" className="download-btn" onClick={showComingSoon}>
                   <i className="fab fa-google-play"></i>
                   <div>
                     <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Download for</div>
-                    <div>User App - Android</div>
+                    <div>Driver App </div>
                   </div>
                 </a>
-                <a href="#" className="download-btn" onClick={showComingSoon}>
-                  <i className="fas fa-steering-wheel"></i>
+                <a style={{marginBottom:'40px'}} href="https://drive.google.com/file/d/1HMpKmJ0SPXe5rtLtSrGmIS8j2jkKZ_B0/view?usp=sharing" className="download-btn" onClick={showComingSoon}>
+                  <i className="fab fa-google-play"></i>
                   <div>
-                    <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Download</div>
-                    <div>Driver App</div>
+                    <div style={{ fontSize: '0.8rem', opacity: 0.8 , }}>Download for</div>
+                    <div >User App </div>
                   </div>
                 </a>
               </div>
@@ -75,55 +94,83 @@ const App = () => {
         </div>
       </section>
 
-      {/* App Booking Form Section */}
+       {/* Booking Form Section */}
       <section className="app-form-section">
         <div className="container">
-          <h2 className="section-title fade-in">Book Emergency Service</h2>
+          <h2 className="section-title fade-in"style={{
+      
+        marginTop:'-12%'
+      }}>Book Emergency Service</h2>
           <div className="form-container fade-in">
             <form id="bookingForm" onSubmit={handleSubmit}>
               <div className="form-grid">
-                <div className="form-group">
-                  <label htmlFor="userName">
-                    <i className="fas fa-user"></i> Full Name
-                  </label>
-                  <input type="text" id="userName" name="userName" placeholder="Enter your full name" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="phoneNumber">
-                    <i className="fas fa-phone"></i> Phone Number
-                  </label>
-                  <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="pickupLocation">
-                    <i className="fas fa-map-marker-alt"></i> Pickup Location
-                  </label>
-                  <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup address" required />
-                </div>
+                {[
+                  { label: 'Full Name', name: 'userName', type: 'text', icon: 'fa-user' },
+                  { label: 'Phone Number', name: 'phoneNumber', type: 'tel', icon: 'fa-phone' },
+                  { label: 'Pickup Location', name: 'pickupLocation', type: 'text', icon: 'fa-map-marker-alt' },
+                ].map((field, i) => (
+                  <div className="form-group" key={i}>
+                    <label htmlFor={field.name}>
+                      <i className={`fas ${field.icon}`}></i> {field.label}
+                    </label>
+                    <input
+                      type={field.type}
+                      id={field.name}
+                      name={field.name}
+                      value={formData[field.name]}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                ))}
+
                 <div className="form-group">
                   <label htmlFor="serviceType">
                     <i className="fas fa-ambulance"></i> Service Type
                   </label>
-                  <select id="serviceType" name="serviceType" required>
+                  <select
+                    id="serviceType"
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleChange}
+                    required
+                  >
                     <option value="">Select service type</option>
                     <option value="bls">Basic Life Support (BLS)</option>
                     <option value="als">Advanced Life Support (ALS)</option>
                     <option value="critical">Critical Care Transport</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="preferredDate">
                     <i className="fas fa-calendar-alt"></i> Preferred Date
                   </label>
-                  <input type="date" id="preferredDate" name="preferredDate" required />
+                  <input
+                    type="date"
+                    id="preferredDate"
+                    name="preferredDate"
+                    value={formData.preferredDate}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="preferredTime">
                     <i className="fas fa-clock"></i> Preferred Time
                   </label>
-                  <input type="time" id="preferredTime" name="preferredTime" required />
+                  <input
+                    type="time"
+                    id="preferredTime"
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
               </div>
+
               <div className="form-group">
                 <label htmlFor="emergencyDetails">
                   <i className="fas fa-notes-medical"></i> Emergency Details / Patient Condition
@@ -132,10 +179,13 @@ const App = () => {
                   id="emergencyDetails"
                   name="emergencyDetails"
                   rows="4"
-                  placeholder="Please describe the patient's condition and any relevant medical information..."
+                  value={formData.emergencyDetails}
+                  onChange={handleChange}
+                  placeholder="Describe the patient's condition..."
                   style={{ resize: 'vertical' }}
                 ></textarea>
               </div>
+
               <button type="submit" className="submit-btn">
                 <i className="fas fa-paper-plane"></i> Submit Booking Request
               </button>

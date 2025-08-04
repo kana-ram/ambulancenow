@@ -1,0 +1,195 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ABOUT SECTION */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.about-subtitle {
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.about-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  word-wrap: break-word;
+}
+
+/* VISION BOX */
+.vision-box {
+  background: linear-gradient(135deg, #e74c3c, #f39c12);
+  padding: 2rem;
+  border-radius: 20px;
+  color: white;
+  width: 100%;
+}
+
+.vision-title {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.vision-number {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* TEAM SECTION */
+.team-section {
+  margin-top: 6rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.team-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.team-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.team-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-icon i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.team-role {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.team-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+/* Tablets & Below */
+@media (max-width: 1024px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem 5%; /* Left and right margin on tablets */
+  }
+
+  .about-paragraph {
+    padding: 0 0.5rem; /* Slight inner padding */
+  }
+
+  .vision-box {
+    margin-right: 1rem; /* Right margin for spacing from edge */
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .vision-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones & Small Devices */
+@media (max-width: 600px) {
+  .about-content {
+    padding: 1rem; /* Padding from both sides */
+    margin-left: 20%;
+  }
+
+  .about-subtitle,
+  .vision-title,
+  .team-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .vision-number {
+    font-size: 2rem;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+    padding: 0 0.5rem; /* Ensure small horizontal spacing */
+  }
+
+  .vision-box {
+    padding: 1rem;
+    margin-right: 0.8rem;
+    margin-left: -37%;
+  }
+
+  .team-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-icon i {
+    font-size: 2rem;
+  }
+
+  .team-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .team-section {
+    padding: 0.8rem;
+  }
+}

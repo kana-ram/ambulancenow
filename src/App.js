@@ -9,15 +9,15 @@ import Features from "./pages/Features";
 import Services from "./pages/Services";
 import Apps from "./pages/Application";
 import Benefits from "./pages/BenefitsSection";
-import Book from "./pages/ContactSection";
-// import Contact from "./pages/Contact";
+
 import Careers from "./pages/CareersSection";
 import HelpCenter from "./pages/HelpCenter";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsAndConditions.jsx";
 import EmergencyProtocols from "./pages/EmergencyProtocols.jsx";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import "./App.css";
+// import "./App.css";
 import ContactSection from "./pages/ContactSection";
 
 function App() {
@@ -49,10 +49,6 @@ function App() {
 
         <section id="benefits" className="section">
           <Benefits />
-        </section>
-
-        <section id="book" className="section">
-          <Book />
         </section>
 
         <section id="contact" className="section contact">
